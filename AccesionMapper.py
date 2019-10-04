@@ -66,7 +66,7 @@ def main():
                 a = "No accession"
             # accesions_uniprot.append(a)
             accession_dictionary[i] = a
-            print(i + "=" + a)
+            #print(i + "=" + a)
             # re.search('name (.*) is valid', resul).group(1)
 
         # 2. Create the output file and output the results
