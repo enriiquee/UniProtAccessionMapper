@@ -1,6 +1,4 @@
-"""Script para cambiar los accession por los de UniProt"""
-# Author: Enrique Perez
-# Contact: enrique.perez@ucm.es
+"""Script to change accessions to UniProt accessions"""
 
 import logging
 import re
@@ -31,20 +29,17 @@ def main():
         logger.info('Starting execution')
         # Load the fasta file
         file_path = sys.argv[1]
-        #output_path = sys.argv[2]
+        # output_path = sys.argv[2]
 
-        # file_path = "/home/juanluis/Desktop/mierda_EDU/Prueba.fasta"
-        # output_path = "/home/juanluis/Desktop/mierda_EDU/pruebaOUTPUT.fasta"
+        # file_path = "/home/Desktop/Prueba.fasta"
 
-        # 1. Read the annotation saving the coordinates for each gene
+        # 1. Read the accessions from the file we want to change
 
-        logger.info('Reading fasta...')
+        logger.info('Reading file...')
 
-        # Cargamos el txt que queremos analizar
-        with open('Accesion.txt', 'r') as filehandle:
+        with open(file_path, 'r') as filehandle:
 
             places = []
-            accesions_uniprot = []
             accession_dictionary = {}
             for line in filehandle:
                 # remove linebreak which is the last character of the string
@@ -60,33 +55,32 @@ def main():
             fp.close()
 
             # print(mystr)
-            # handle = urllib.request.urlopen("http://www.uniprot.org/uniprot/J9VS38.xml")
-
+            # From html, we take the line we are interesting
             p = re.compile("class=\"entryID\"><a href=\"/uniprot/(.*)\">")
             result = str(p.search(mystr))
 
+            # If there isn't a result.
             if result != "None":
                 a = re.search('"/uniprot/(.*)"', result).group(1)
             else:
-                a = "Sin accesion"
+                a = "No accession"
             # accesions_uniprot.append(a)
             accession_dictionary[i] = a
-            print(i+"="+a)
+            print(i + "=" + a)
             # re.search('name (.*) is valid', resul).group(1)
 
         # 2. Create the output file and output the results
         logger.info('Saving results...')
 
+        # Export dictionary to excel file
         df = pd.DataFrame(data=accession_dictionary, index=[0])
+        df = df.T
 
-        df = (df.T)
-
-        #print(df)
-
+        # print(df)
         df.to_excel('AccesionUniprot.xlsx')
 
         # 3. Close the file handler
-        logger.info('Saved ' )
+        logger.info('Saved ')
 
         logger.info('Done. Exiting program.')
 
@@ -99,3 +93,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
