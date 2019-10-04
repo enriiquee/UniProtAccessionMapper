@@ -19,7 +19,7 @@ To start the script, simply run `Python` from Windows/Linux/Mac terminal. Select
 
 `python UniProtAccesionMapper.py accession_file.txt`
 
-The program will finish with the next message: 
+The program will start and finish with the next message: 
 
 ``` 
     INFO - Starting execution
