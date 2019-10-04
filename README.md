@@ -21,7 +21,10 @@ To start the script, simply run `Python` from Windows/Linux/Mac terminal. Select
 
 The program will finish with the next message: 
 
-``` INFO - Saving results...
+``` 
+    INFO - Starting execution
+    INFO - Reading file...
+    INFO - Saving results...
     INFO - Saved
     INFO - Done. Exiting program.
 ```
