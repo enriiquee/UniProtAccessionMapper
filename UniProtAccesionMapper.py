@@ -1,10 +1,19 @@
 """Script to change accessions to UniProt accessions"""
+import os
 
-import logging
-import re
-import sys
-import urllib
-import pandas as pd
+try:
+	import logging
+	import re
+	import sys
+	import urllib
+	import urllib.request as urllib
+	import pandas as pd
+except ImportError:
+  print("Trying to Install required module: requests\n")
+  os.system('python -m pip install requests')
+# -- above lines try to install requests module if not present
+# -- if all went well, import required module again ( for global access)
+
 
 # create logger
 logger = logging.getLogger(__name__)
@@ -49,7 +58,7 @@ def main():
 
         for i in places:
             # Take info from  WEB
-            fp = urllib.request.urlopen("https://www.uniprot.org/uniprot/?query=" + i + "&sort=score")
+            fp = urllib.urlopen("https://www.uniprot.org/uniprot/?query=" + i + "&sort=score")
             mybytes = fp.read()
             mystr = mybytes.decode("utf8")
             fp.close()
@@ -66,7 +75,7 @@ def main():
                 a = "No accession"
             # accesions_uniprot.append(a)
             accession_dictionary[i] = a
-            #print(i + "=" + a)
+            print(i + "=" + a)
             # re.search('name (.*) is valid', resul).group(1)
 
         # 2. Create the output file and output the results
