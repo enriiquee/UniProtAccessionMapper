@@ -19,6 +19,8 @@ To start the script, simply run `Python` from Windows/Linux/Mac terminal. Select
 
 `python UniProtAccesionMapper.py accession_file.txt`
 
+Sometimes python PATH is not in recognised. Try to use just `py UniProtAccesionMapper.py accession_file.txt`
+
 The program will start and finish with the next message: 
 
 ``` 
