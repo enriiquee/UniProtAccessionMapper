@@ -3,7 +3,7 @@ UniProt-AccessionMapper
 
 # About UniProt-AccessionMapper
 
-This script allows to map multiples accessions from different databases. 
+This script allows to map multiples accessions from different databases to UniProt. 
 
 # Getting UniProt-AccessionMapper
 
