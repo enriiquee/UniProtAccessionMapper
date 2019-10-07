@@ -33,9 +33,9 @@ The program will start and finish with the next message:
     INFO - Done. Exiting program.
 ```
 
-After this, a `excel` file would be created in the same directory where the script is located, with the name: `AccesionUniprot.xlsx`
+After this, a `excel` file will be created in the same directory where the script is located, with the name: `AccesionUniprot.xlsx`
 
-If you have any error, try to check this line of the code: 
+If you have any error with URL, try to check this line of the code: 
 `fp = urllib.request.urlopen("https://www.uniprot.org/uniprot/?query=" + i + "&sort=score")`
 
 In order to fix this, performs a manual search in UniProt and replaces the url of this line of code with the new one, taking into account that `i` is the number of the accession.
